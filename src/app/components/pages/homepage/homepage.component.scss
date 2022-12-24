@@ -1,0 +1,56 @@
+.hero-wrapper {
+  background-color: rgb(236, 236, 236);
+  height: 60vh;
+  #pavle {
+    width: 30rem;
+    height: 30rem;
+    border-radius: 50%;
+    height: 80%;
+  }
+}
+.hero-info {
+  padding-top: 100px;
+  height: 100%;
+  img {
+    width: 70%;
+    margin: 0 auto;
+  }
+  .naslov {
+    font-family: Lobster, sans-serif;
+  }
+}
+.o-nama-wrapper {
+  height: 50vh;
+  .tekst {
+    width: 50%;
+  }
+}
+.usluge-wrapper {
+  height: 50vh;
+}
+.musterije {
+  .slike-musterija {
+    width: 100%;
+    padding-left: 100px;
+  }
+  .columns {
+    margin: 0;
+  }
+  background-color: rgb(236, 236, 236);
+  height: 50vh;
+  img {
+    object-fit: cover;
+    width: 24%;
+    height: 80%;
+    padding: 15px;
+    border-radius: 50px;
+  }
+}
+.kontakt-wrapper {
+  height: 40vh;
+}
+@media screen and (max-width: 420px) {
+  .hero-wrapper {
+    height: auto;
+  }
+}
