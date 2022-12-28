@@ -1,0 +1,14 @@
+.slide {
+  border-radius: 50px;
+  background-size: cover;
+  background-position: center;
+  height: 320px;
+  width: 320px;
+  box-shadow: 1px 1px 35px 8px rgba(0, 0, 0, 0.75);
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

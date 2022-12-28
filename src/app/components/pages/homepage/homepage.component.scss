@@ -1,56 +1,239 @@
+$base-color: #a0dcdc;
+.page-wrapper {
+  section:nth-child(2n + 1) {
+    background-color: $base-color;
+    box-shadow: 0px 0px 28px 7px rgba(0, 0, 0, 0.75);
+  }
+}
+.navbar-menu {
+  animation: navAnimOpen 0.2s ease-in-out;
+}
+
+@keyframes navAnimOpen {
+  0% {
+    display: none;
+    opacity: 0;
+    max-height: 0;
+  }
+  1% {
+    display: block;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    max-height: 396px;
+  }
+}
+
+.navbar {
+  width: 100%;
+  background-color: rgba(236, 236, 236, 0);
+  .logo {
+    font-family: Lobster, sans-serif;
+  }
+  .navbar-start {
+    a:not(.logo) {
+      font-style: italic;
+    }
+  }
+}
 .hero-wrapper {
-  background-color: rgb(236, 236, 236);
   height: 60vh;
   #pavle {
     width: 30rem;
     height: 30rem;
     border-radius: 50%;
     height: 80%;
+    margin-top: 50px;
   }
 }
 .hero-info {
-  padding-top: 100px;
+  padding-top: 80px;
   height: 100%;
   img {
     width: 70%;
     margin: 0 auto;
   }
+
   .naslov {
     font-family: Lobster, sans-serif;
+  }
+  p:not(.naslov) {
+    font-family: Pacifico, sans-serif;
+  }
+  .logo {
+    width: 150px;
   }
 }
 .o-nama-wrapper {
   height: 50vh;
   .tekst {
-    width: 50%;
+    margin-top: -50px;
+    .text {
+      width: 100%;
+    }
+  }
+  img {
+    rotate: 270deg;
   }
 }
 .usluge-wrapper {
   height: 50vh;
+  .dugme {
+    background-color: $base-color;
+    color: white;
+  }
 }
 .musterije {
-  .slike-musterija {
-    width: 100%;
-    padding-left: 100px;
-  }
+  height: 50vh;
   .columns {
     margin: 0;
   }
-  background-color: rgb(236, 236, 236);
-  height: 50vh;
-  img {
-    object-fit: cover;
-    width: 24%;
-    height: 80%;
-    padding: 15px;
-    border-radius: 50px;
+  .slike-musterija {
+    margin-top: 25px;
+    width: 100%;
+    display: flex;
+    gap: 50px;
+    justify-content: space-evenly;
+    align-items: center;
   }
 }
+
 .kontakt-wrapper {
   height: 40vh;
+  p:first-child {
+    font-family: Lobster, sans-serif;
+  }
+
+  .mapa {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  iframe {
+    height: 80%;
+    width: 90%;
+  }
 }
-@media screen and (max-width: 420px) {
-  .hero-wrapper {
+.icon-wrapper {
+  margin-top: 20px;
+  gap: 25px;
+  display: flex;
+  a {
+    gap: 25px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #pavle {
+    margin-top: 25px !important;
+    padding: 10px;
+  }
+  .hero-info {
+    padding: 50px;
+  }
+  .hero-wrapper,
+  .o-nama-wrapper,
+  .musterije,
+  .usluge-wrapper,
+  .kontakt-wrapper {
     height: auto;
+    margin: 0;
+    padding: 15px;
+  }
+  .o-nama-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    .tekst {
+      width: 100%;
+      margin: 0;
+    }
+    img {
+      rotate: 17deg;
+      margin-top: 30px;
+    }
+  }
+  .musterije {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+      text-align: center;
+    }
+    .slike-musterija {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      img {
+        width: 100%;
+        height: 320px;
+      }
+    }
+  }
+  .usluge-wrapper {
+    text-align: center;
+    th {
+      text-align: center;
+    }
+  }
+  .kontakt-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    .icon-wrapper {
+      justify-content: center;
+    }
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .hero-wrapper,
+  .o-nama-wrapper,
+  .musterije,
+  .usluge-wrapper,
+  .kontakt-wrapper {
+    height: auto;
+    margin: 0;
+    padding: 15px;
+  }
+  .o-nama-wrapper {
+    flex-direction: column;
+    .tekst {
+      height: fit-content;
+      width: fit-content;
+      margin-top: 0 !important;
+    }
+    .text {
+      margin: 0 !important;
+    }
+    img {
+      rotate: 17deg;
+    }
+  }
+  .slike-musterija {
+    gap: 50px !important;
+  }
+  .musterije {
+    height: auto;
+    .slike-musterija {
+      flex-wrap: wrap;
+      gap: 0px;
+      img {
+        width: 40% !important;
+        height: 300px !important;
+        margin: 20px;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1025px) and (max-width: 1407px) {
+  .musterije {
+    height: auto;
+    .slike-musterija {
+      flex-wrap: wrap;
+      gap: 0px;
+      margin-bottom: 15px;
+    }
   }
 }

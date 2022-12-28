@@ -1,96 +1,173 @@
-<section>
-  <div class="hero-wrapper columns is-centered is-vcentered">
-    <div class="column is-4 is-centered">
-      <img src="../../../../assets/licensed-image.jfif" alt="" id="pavle" />
-    </div>
-    <div
-      class="column hero-info is-4 has-text-centered is-flex is-flex-direction-column"
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item logo is-size-4" (click)="scrollTo('hero-wrapper')">
+      4 paws-in
+    </a>
+
+    <a
+      role="button"
+      class="navbar-burger"
+      aria-label="menu"
+      aria-expanded="false"
+      data-target="navbarBasicExample"
+      (click)="toggle()"
     >
-      <img src="../../../../assets/4paws-3.png" alt="" />
-      <div class="text mt-6">
-        <p class="is-size-1 naslov">FOUR PAWS</p>
-        <p class="is-size-3 tekst has-text-weight-light">Pet grooming centar</p>
-        <p class="is-size-3 tekst has-text-weight-light">
-          gde je svaki ljubimac VIP
-        </p>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div
+    [ngClass]="isActive === true ? 'is-active' : ' '"
+    id="navbarBasicExample"
+    class="navbar-menu"
+  >
+    <div class="navbar-start">
+      <a class="navbar-item" (click)="scrollTo('o-nama-wrapper')"> O nama </a>
+      <a class="navbar-item" (click)="scrollTo('musterije')">
+        Nase mušterije
+      </a>
+      <a
+        class="navbar-item"
+        (click)="showModal = !showModal"
+        (click)="toggle()"
+      >
+        Cenovnik
+      </a>
+      <a class="navbar-item" (click)="scrollTo('kontakt-wrapper')"> Kontakt </a>
+    </div>
+  </div>
+</nav>
+<div class="page-wrapper">
+  <section>
+    <div
+      class="columns is-centered is-vcentered hero-wrapper"
+      id="hero-wrapper"
+    >
+      <div class="column is-4 is-centered">
+        <img
+          src="../../../../assets/LogoZumbulBezWaterabezlogoa.png"
+          alt=""
+          id="pavle"
+        />
+      </div>
+      <div
+        class="column hero-info is-4 is-8-tablet is-4-desktop has-text-centered is-flex is-flex-direction-column"
+      >
+        <img
+          src="../../../../assets/logonobackground.png"
+          alt=""
+          class="logo"
+        />
+        <div class="text mt-3">
+          <p class="is-size-1 naslov">FOUR PAWS-IN</p>
+          <p class="is-size-3 tekst has-text-weight-light mt-5">
+            Salon za negu pasa
+          </p>
+          <p class="is-size-3 tekst has-text-weight-light">
+            gde je svaki ljubimac VIP
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-<section>
-  <div class="o-nama-wrapper columns is-centered is-vcentered">
-    <div class="tekst is-text has-text-centered">
-      <p class="is-size-2">O NAMA</p>
-      <p class="is-size-3">OVDE IDE KRATAK TEKST O SALONU</p>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo impedit
-      magnam sequi laudantium cumque dolorum. Dolorem ipsa expedita saepe
-      incidunt? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo
-      impedit magnam sequi laudantium cumque dolorum. Dolorem ipsa expedita
-      saepe incidunt? Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-      Illo impedit magnam sequi laudantium cumque dolorum. Dolorem ipsa expedita
-      saepe incidunt? Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-      Illo impedit magnam sequi laudantium cumque dolorum. Dolorem ipsa expedita
-      saepe incidunt?
+  </section>
+  <section>
+    <div
+      class="columns is-centered is-vcentered o-nama-wrapper"
+      id="o-nama-wrapper"
+    >
+      <img src="../../../../assets/4paws-3.png" alt="" />
+      <div class="column tekst is-text has-text-centered is-4 mt-4">
+        <p class="text mb-1 is-size-5">
+          Dugogodišnja ljubav i rad sa psima izrodila je ideju o otvaranju
+          salona za negu pasa gde će svaki pas biti tretiran s ljubavlju i
+          pažnjom kao pravi VIP GOST. Da bi vaš ljubimac bio zdrav ,
+          negovan,ispunjen,srećan, pored pažnje i ljubavi koje mu pružate,
+          morate zadovoljiti i njegove osnovne potrebe koje se tiču higijene,
+          ujedno i užitka.Naš"4 PAWS IN" salon za negu pasa je mesto koje vašem
+          ljubimcu omogućava niz usluga za njegovo bezgranično zdravlje,lepotu i
+          užitak.Ukoliko ste u potrazi za idealnim mestom za vašeg ljubimca koje
+          će mu pružiti kvalitetnu negu "4 PAWS IN" salon je pravo mesto za
+          vas!Dovesti svog psa u salon nije samo želja da ljubimac izgleda lepo
+          , već je i važan deo brige o zdravlju naših čupavih prijatelja.
+        </p>
+      </div>
+      <div class="column">
+        <image-slider [slides]="slides.salon"></image-slider>
+      </div>
+      <img src="../../../../assets/4paws-3.png" alt="" />
     </div>
-  </div>
-</section>
+  </section>
 
-<section>
-  <div class="columns musterije is-flex-direction-column is-vcentered">
-    <div class="columns mt-3">
-      <p class="is-size-2">NASE ZADOVOLJNE MUSTERIJE</p>
-    </div>
-    <div class="columns slike-musterija">
-      <img src="../../../../assets/1.webp" alt="Placeholder image" />
-      <img src="../../../../assets/2.jpg" alt="Placeholder image" />
-      <img src="../../../../assets/3.jpg" alt="Placeholder image" />
+  <section>
+    <div
+      class="columns musterije is-flex-direction-column is-vcentered"
+      id="musterije"
+    >
+      <div class="columns mt-3 is-vcentered is-centered">
+        <p class="is-size-2">NAŠE ZADOVOLJNE MUŠTERIJE</p>
+      </div>
+      <div class="columns slike-musterija">
+        <image-slider [slides]="slides.paja"></image-slider>
 
-      <img src="../../../../assets/4.jpg" alt="Placeholder image" />
+        <image-slider [slides]="slides.pas2"></image-slider>
+
+        <image-slider [slides]="slides.pas3"></image-slider>
+
+        <image-slider [slides]="slides.pas4"></image-slider>
+      </div>
     </div>
-  </div>
-</section>
-<section>
-  <div
-    class="columns usluge-wrapper is-centered is-flex-direction-column is-vcentered"
-  >
-    <p class="is-size-2">NASE USLUGE</p>
-    <div class="column is-6 is-centered">
-      <table class="table is-fullwidth">
-        <thead>
-          <th>USLUGA</th>
-          <th>CENA</th>
-        </thead>
-        <tr>
-          <td>PRANJE</td>
-          <td>1000 din</td>
-        </tr>
-        <tr>
-          <td>PRANJE</td>
-          <td>1000 din</td>
-        </tr>
-        <tr>
-          <td>PRANJE</td>
-          <td>1000 din</td>
-        </tr>
-        <tr>
-          <td>PRANJE</td>
-          <td>1000 din</td>
-        </tr>
-        <tr>
-          <td>PRANJE</td>
-          <td>1000 din</td>
-        </tr>
-      </table>
+  </section>
+
+  <section>
+    <div
+      class="columns kontakt-wrapper is-centered is-vcentered"
+      id="kontakt-wrapper"
+    >
+      <div class="column is-4 kontakt is-centered is-vcentered">
+        <p class="is-size-3">four paws-in</p>
+        <p>Boška Buhe 32,Inđija</p>
+        <p>Kontakt telefon : 069 120 5400</p>
+        <div class="icon-wrapper">
+          <a
+            href="https://instagram.com/fourpaws_salon_za_negu_pasa?igshid=YmMyMTA2M2Y="
+            target="_blank"
+          >
+            <i class="fa-brands fa-instagram fa-2xl"></i>
+          </a>
+          <a
+            href="https://www.facebook.com/profile.php?id=100085624173169"
+            target="_blank"
+          >
+            <i class="fab fa-facebook-f fa-2xl"></i>
+          </a>
+        </div>
+      </div>
+      <div class="column is-4 mapa">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1409.2136692363244!2d20.074077458274125!3d45.05684159477459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475af8ce92c04d25%3A0x778af3cdbc47d40!2sBo%C5%A1ka%20Buhe%2032%2C%20In%C4%91ija%2022320!5e0!3m2!1sen!2srs!4v1671922042794!5m2!1sen!2srs"
+          width="600"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
     </div>
-  </div>
-</section>
-<section>
-  <div class="columns kontakt-wrapper is-centered is-vcentered">
-    <div class="column is-4 is-centered is-vcentered">
-      <p>4 paws</p>
-      <p>BOSKA BUHE 32</p>
-      <p>Kontakt telefon : 0655578974</p>
+  </section>
+  <div class="modal" [ngClass]="{ 'is-active': showModal }">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <p class="image is-8by3">
+        <img src="../../../../assets/cenovnik.jpg" alt="" />
+      </p>
     </div>
-    <div class="column is-4"></div>
+    <button
+      class="modal-close is-large"
+      aria-label="close"
+      (click)="showModal = !showModal"
+    ></button>
   </div>
-</section>
+</div>
