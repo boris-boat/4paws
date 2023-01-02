@@ -1,4 +1,5 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, SimpleChange } from '@angular/core';
+import { CloudService } from 'src/app/services/cloud.service';
 
 
 @Component({
@@ -8,16 +9,21 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 })
 export class SliderComponent implements OnInit, OnDestroy {
   @Input() slides: any = []
+  googleUrl: string = "https://storage.googleapis.com/4paws/"
 
   currentIndex: number = 0;
   timeoutId?: number;
+  constructor() {
 
+  }
   ngOnInit(): void {
     this.resetTimer();
   }
+
   ngOnDestroy() {
     window.clearTimeout(this.timeoutId);
   }
+
   resetTimer() {
     if (this.timeoutId) {
       window.clearTimeout(this.timeoutId);
@@ -49,6 +55,6 @@ export class SliderComponent implements OnInit, OnDestroy {
   }
 
   getCurrentSlideUrl() {
-    return `url('${this.slides[this.currentIndex].url}')`;
+    return `url('${this.googleUrl + this.slides[this.currentIndex].name}')`;
   }
 }

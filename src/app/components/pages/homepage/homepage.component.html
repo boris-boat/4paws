@@ -93,29 +93,48 @@
           , već je i važan deo brige o zdravlju naših čupavih prijatelja.
         </p>
       </div>
-      <div class="column">
-        <image-slider [slides]="slides.salon"></image-slider>
+      <div class="column is-offset-1-desktop">
+        <image-slider *ngIf="!loading" [slides]="salonItems"></image-slider>
       </div>
       <img src="../../../../assets/4paws-3.png" alt="" />
     </div>
   </section>
 
   <section>
-    <div
-      class="columns musterije is-flex-direction-column is-vcentered"
-      id="musterije"
-    >
-      <div class="columns mt-3 is-vcentered is-centered">
-        <p class="is-size-2">NAŠE ZADOVOLJNE MUŠTERIJE</p>
+    <div class="columns musterije is-vcentered is-centered" id="musterije">
+      <div class="column is-6 is-12-mobile slike-musterija m-6">
+        <gallery
+          [items]="dogsItems"
+          thumbPosition="left"
+          gallerize="two"
+        ></gallery>
       </div>
-      <div class="columns slike-musterija">
-        <image-slider [slides]="slides.paja"></image-slider>
+      <div class="column is-4 is-12-mobile termini">
+        <div class="columns is-flex flex-column is-centered">
+          <p class="is-size-2 has-text-centered" *ngIf="termini.length != 0">
+            Slobodni termini
+          </p>
 
-        <image-slider [slides]="slides.pas2"></image-slider>
-
-        <image-slider [slides]="slides.pas3"></image-slider>
-
-        <image-slider [slides]="slides.pas4"></image-slider>
+          <p
+            class="text is-size-3 has-text-centered"
+            *ngIf="termini.length == 0"
+          >
+            Trenutno nema slobodnih termina,za više informacija nas pozovite!
+          </p>
+        </div>
+        <div class="termini-list" *ngIf="termini.length != 0">
+          <div class="termin" *ngFor="let item of termini">
+            <div class="is-flex is-justify-content-space-between">
+              <p style="padding-top: 5px">{{ item.text }}</p>
+              <button
+                class="button is-primary"
+                (click)="otvoriModal(item.text)"
+              >
+                Pošalji upit
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -142,6 +161,9 @@
           >
             <i class="fab fa-facebook-f fa-2xl"></i>
           </a>
+          <a href="mailto: fourpaws022@gmail.com" target="_blank">
+            <i class="fa-solid fa-envelope fa-2xl"></i>
+          </a>
         </div>
       </div>
       <div class="column is-4 mapa">
@@ -157,7 +179,10 @@
       </div>
     </div>
   </section>
-  <div class="modal" [ngClass]="{ 'is-active': showModal }">
+  <div
+    class="modal animate__animated animate__fadeIn"
+    [ngClass]="{ 'is-active': showModal }"
+  >
     <div class="modal-background"></div>
     <div class="modal-content">
       <p class="image is-8by3">
@@ -168,6 +193,54 @@
       class="modal-close is-large"
       aria-label="close"
       (click)="showModal = !showModal"
+    ></button>
+  </div>
+  <div class="modal" [ngClass]="{ 'is-active': showModal2 }">
+    <div class="modal-background"></div>
+    <div class="modal-content animate__animated animate__fadeInUp">
+      <form class="forma" [formGroup]="forma">
+        <div class="field">
+          <label class="label">Termin</label>
+          <div class="control">
+            <input class="input" type="text" formControlName="termin" />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Ime</label>
+          <div class="control">
+            <input class="input" type="text" formControlName="ime" />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Kontakt telefon</label>
+          <div class="control">
+            <input class="input" type="text" formControlName="kontakt" />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Rasa psa</label>
+          <div class="control">
+            <input class="input" type="text" formControlName="rasa" />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Usluga</label>
+          <div class="control">
+            <input class="input" type="text" formControlName="usluga" />
+          </div>
+        </div>
+        <button class="button is-primary" (click)="sendEmail()">Pošalji</button>
+        <button
+          class="modal-close is-large"
+          aria-label="close"
+          (click)="showModal2 = false"
+        ></button>
+      </form>
+    </div>
+    <button
+      class="modal-close is-large"
+      aria-label="close"
+      (click)="showModal2 = false"
     ></button>
   </div>
 </div>

@@ -1,4 +1,5 @@
 $base-color: #a0dcdc;
+
 .page-wrapper {
   section:nth-child(2n + 1) {
     background-color: $base-color;
@@ -84,18 +85,30 @@ $base-color: #a0dcdc;
     color: white;
   }
 }
+
 .musterije {
-  height: 50vh;
+  width: 100%;
+  height: 100%;
   .columns {
     margin: 0;
   }
-  .slike-musterija {
-    margin-top: 25px;
-    width: 100%;
-    display: flex;
-    gap: 50px;
-    justify-content: space-evenly;
-    align-items: center;
+  .termini {
+    height: 500px;
+    overflow: auto;
+
+    .termini-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      .termin {
+        width: 80%;
+        background-color: white;
+        border-radius: 10px;
+        padding: 10px;
+      }
+    }
   }
 }
 
@@ -123,7 +136,11 @@ $base-color: #a0dcdc;
     gap: 25px;
   }
 }
-
+.forma {
+  padding: 30px;
+  background-color: white;
+  border-radius: 30px;
+}
 @media screen and (max-width: 768px) {
   #pavle {
     margin-top: 25px !important;
@@ -154,17 +171,28 @@ $base-color: #a0dcdc;
       margin-top: 30px;
     }
   }
+
   .musterije {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    padding: 20px !important;
+    .termini {
+      height: auto;
+      max-height: 60vh;
+      .termini-list {
+        .termin {
+          width: 100%;
+        }
+      }
+    }
     p {
       text-align: center;
     }
     .slike-musterija {
       display: flex;
       flex-direction: column;
-      padding: 20px;
       img {
         width: 100%;
         height: 320px;
@@ -183,6 +211,10 @@ $base-color: #a0dcdc;
     justify-content: center;
     text-align: center;
     .icon-wrapper {
+      justify-content: center;
+    }
+    .mapa {
+      display: flex;
       justify-content: center;
     }
   }

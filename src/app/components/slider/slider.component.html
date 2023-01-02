@@ -1,4 +1,4 @@
-<div class="slider">
+<div class="slider" *ngIf="slides?.length">
   <div
     class="slide"
     [ngStyle]="{ 'background-image': getCurrentSlideUrl() }"
