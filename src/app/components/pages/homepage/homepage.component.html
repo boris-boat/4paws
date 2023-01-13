@@ -93,7 +93,7 @@
           , već je i važan deo brige o zdravlju naših čupavih prijatelja.
         </p>
       </div>
-      <div class="column is-offset-1-desktop">
+      <div class="column is-offset-1-desktop slider">
         <image-slider *ngIf="!loading" [slides]="salonItems"></image-slider>
       </div>
       <img src="../../../../assets/4paws-3.png" alt="" />
@@ -127,7 +127,8 @@
             <div class="is-flex is-justify-content-space-between">
               <p style="padding-top: 5px">{{ item.text }}</p>
               <button
-                class="button is-primary"
+                class="button is-primary js-modal-trigger"
+                data-target="modalUpit"
                 (click)="otvoriModal(item.text)"
               >
                 Pošalji upit
@@ -147,7 +148,7 @@
       <div class="column is-4 kontakt is-centered is-vcentered">
         <p class="is-size-3">four paws-in</p>
         <p>Boška Buhe 32,Inđija</p>
-        <p>Kontakt telefon : 069 120 5400</p>
+        <p>Kontakt telefon : <a href="tel:0691205400">069 120 5400</a></p>
         <div class="icon-wrapper">
           <a
             href="https://instagram.com/fourpaws_salon_za_negu_pasa?igshid=YmMyMTA2M2Y="
@@ -181,9 +182,10 @@
   </section>
   <div
     class="modal animate__animated animate__fadeIn"
+    id="modalCenovnik"
     [ngClass]="{ 'is-active': showModal }"
   >
-    <div class="modal-background"></div>
+    <div class="modal-background" (click)="showModal = !showModal"></div>
     <div class="modal-content">
       <p class="image is-8by3">
         <img src="../../../../assets/cenovnik.jpg" alt="" />
@@ -196,7 +198,7 @@
     ></button>
   </div>
   <div class="modal" [ngClass]="{ 'is-active': showModal2 }">
-    <div class="modal-background"></div>
+    <div class="modal-background" (click)="showModal2 = !showModal2"></div>
     <div class="modal-content animate__animated animate__fadeInUp">
       <form class="forma" [formGroup]="forma">
         <div class="field">
@@ -214,7 +216,7 @@
         <div class="field">
           <label class="label">Kontakt telefon</label>
           <div class="control">
-            <input class="input" type="text" formControlName="kontakt" />
+            <input class="input" type="number" formControlName="kontakt" />
           </div>
         </div>
         <div class="field">

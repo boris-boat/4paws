@@ -1,27 +1,17 @@
 # 4paws
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.7.
+Website made for local grooming company.It provides basic info about the venue and also available appointments for next period.Besides this site , also there is a cms system
+which allows the owner to add and delete photos of both saloon and customers and add or delete appointments.Clicking on "posalji upit" the app will send an request to backend and using nodemailer the request will be forwarded to company email.
 
-## Development server
+## Live site
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+https://4paws-in.com/
 
-## Code scaffolding
+## Tech used
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Front end : Angular, Angular material,Bulma css,
+Back end : Node JS,Express,Nodemailer
 
-## Build
+## Running localy
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Start with npm install and ng serve to run the app
