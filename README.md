@@ -9,7 +9,7 @@ https://4paws-in.com/
 
 ## Tech used
 
-Front end : Angular, Angular material,Bulma css,
+Front end : Angular, Angular material,Bulma css.\\
 Back end : Node JS,Express,Nodemailer
 
 ## Running localy
