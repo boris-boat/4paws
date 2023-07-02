@@ -26,7 +26,7 @@
     <div class="navbar-start">
       <a class="navbar-item" (click)="scrollTo('o-nama-wrapper')"> O nama </a>
       <a class="navbar-item" (click)="scrollTo('musterije')">
-        Nase mušterije
+        Naše mušterije
       </a>
       <a
         class="navbar-item"
@@ -45,7 +45,7 @@
       class="columns is-centered is-vcentered hero-wrapper"
       id="hero-wrapper"
     >
-      <div class="column is-4 is-centered">
+      <div class="column is-4 is-centered animate__animated animate__fadeIn">
         <img
           src="../../../../assets/LogoZumbulBezWaterabezlogoa.png"
           alt=""
@@ -53,7 +53,7 @@
         />
       </div>
       <div
-        class="column hero-info is-4 is-8-tablet is-4-desktop has-text-centered is-flex is-flex-direction-column"
+        class="column hero-info is-4 is-8-tablet is-4-desktop has-text-centered is-flex is-flex-direction-column animate__animated animate__fadeIn"
       >
         <img
           src="../../../../assets/logonobackground.png"
@@ -61,7 +61,7 @@
           class="logo"
         />
         <div class="text mt-3">
-          <p class="is-size-1 naslov">FOUR PAWS-IN</p>
+          <h1 class="is-size-1 naslov">FOUR PAWS-IN</h1>
           <p class="is-size-3 tekst has-text-weight-light mt-5">
             Salon za negu pasa
           </p>
@@ -72,7 +72,7 @@
       </div>
     </div>
   </section>
-  <section>
+  <section class="animate__animated animate__fadeIn">
     <div
       class="columns is-centered is-vcentered o-nama-wrapper"
       id="o-nama-wrapper"
@@ -95,6 +95,9 @@
       </div>
       <div class="column is-offset-1-desktop slider">
         <image-slider *ngIf="!loading" [slides]="salonItems"></image-slider>
+        <!-- <video [autoplay]="true" [muted]="true" [loop]="true">
+          <source src="../../../../assets/4pawsvideo.mp4" type="video/mp4" />
+        </video> -->
       </div>
       <img src="../../../../assets/4paws-3.png" alt="" />
     </div>
@@ -104,17 +107,25 @@
     <div class="columns musterije is-vcentered is-centered" id="musterije">
       <div class="column is-6 is-12-mobile slike-musterija m-6">
         <gallery
+          *ngIf="isMobile()"
+          [items]="dogsItems"
+          thumbPosition="left"
+          gallerize="two"
+          [thumb]="false"
+        ></gallery>
+        <gallery
+          *ngIf="!isMobile()"
           [items]="dogsItems"
           thumbPosition="left"
           gallerize="two"
         ></gallery>
       </div>
-      <div class="column is-4 is-12-mobile termini">
-        <div class="columns is-flex flex-column is-centered">
-          <p class="is-size-2 has-text-centered" *ngIf="termini.length != 0">
-            Slobodni termini
-          </p>
 
+      <div class="column is-4 is-12-mobile termini">
+        <p class="is-size-2 has-text-centered" *ngIf="termini.length != 0">
+          Slobodni termini
+        </p>
+        <div class="columns is-flex flex-column is-centered">
           <p
             class="text is-size-3 has-text-centered"
             *ngIf="termini.length == 0"
@@ -216,7 +227,7 @@
         <div class="field">
           <label class="label">Kontakt telefon</label>
           <div class="control">
-            <input class="input" type="number" formControlName="kontakt" />
+            <input class="input" inputmode="decimal" type="number" formControlName="kontakt" placeholder="06*1234568"/>
           </div>
         </div>
         <div class="field">

@@ -6,7 +6,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CloudService {
-  apiUrl = "https://podsetnik.herokuapp.com/"
+  // apiUrl = "https://podsetnik.herokuapp.com/"
+  apiUrl = "https://najboljibekend.herokuapp.com/"
+
   constructor(private http: HttpClient) { }
   getGalleryPhotos() {
     return this.http.get(this.apiUrl + "4paws/api/getGalleryImages")

@@ -35,6 +35,11 @@ export class HomepageComponent implements OnInit {
       this.isActive = false
     };
   }
+  isMobile() {
+    const width = window.innerWidth
+    if (width < 580) return true
+    else return false
+  }
   scrollTo(el: string) {
     let section = document.getElementById(el)
     if (section) {
@@ -69,7 +74,7 @@ export class HomepageComponent implements OnInit {
   }
   onBeforeSlide = (detail: any): void => {
     const { index, prevIndex } = detail;
-    console.log(index, prevIndex);
+
   };
   getTermine() {
     this.service.getTermine().subscribe((res: any) => {
@@ -89,7 +94,7 @@ export class HomepageComponent implements OnInit {
       this.notifier.notify("success", "Hvala na upitu!")
       this.notifier.notify("info", "Bićete obavešteni o potvrdi rezervacije u najkraćem roku")
       this.showModal2 = false
-      this.service.sendEmail(this.forma.getRawValue()).subscribe((res) => console.log(res))
+      this.service.sendEmail(this.forma.getRawValue()).subscribe((res) => { })
       this.forma.reset()
     }
     else {
