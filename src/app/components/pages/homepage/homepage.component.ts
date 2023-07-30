@@ -4,13 +4,24 @@ import { Component, OnInit } from '@angular/core';
 import { ImageItem, ThumbnailsMode } from 'ng-gallery';
 import { CloudService } from 'src/app/services/cloud.service';
 import { NotifierService } from 'angular-notifier';
+
+import {
+  CalendarEvent,
+  CalendarEventAction,
+  CalendarEventTimesChangedEvent,
+  CalendarView,
+} from 'angular-calendar';
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss']
 })
 export class HomepageComponent implements OnInit {
+  view = CalendarView.Month;
+  locale: string = 'sr-LATN';
   googleUrl: string = "https://storage.googleapis.com/4paws/"
+  viewDate:Date = new Date()
+  showCalendar = false
   isActive: boolean = false
   showModal: boolean = false
   showModal2: boolean = false
@@ -19,7 +30,8 @@ export class HomepageComponent implements OnInit {
   salonItems: any = []
   termini: Termin[] = []
   forma: FormGroup = new FormGroup({
-    termin: new FormControl(""),
+    datum: new FormControl(""),
+    vreme:new FormControl("", Validators.required),
     ime: new FormControl("", Validators.required),
     kontakt: new FormControl("", Validators.required),
     rasa: new FormControl("", Validators.required),
@@ -39,6 +51,9 @@ export class HomepageComponent implements OnInit {
     const width = window.innerWidth
     if (width < 580) return true
     else return false
+  }
+  setView(view:any) {
+    this.view = view;
   }
   scrollTo(el: string) {
     let section = document.getElementById(el)
@@ -89,7 +104,7 @@ export class HomepageComponent implements OnInit {
 
   }
   sendEmail() {
-
+    console.log(this.forma)
     if (this.forma.valid) {
       this.notifier.notify("success", "Hvala na upitu!")
       this.notifier.notify("info", "Bićete obavešteni o potvrdi rezervacije u najkraćem roku")
@@ -103,5 +118,19 @@ export class HomepageComponent implements OnInit {
     }
 
 
+  }
+
+  calendarChange(event:any){
+    console.log(event)
+    if(event.isPast) {
+      this.notifier.notify("error","Datum je vec prošao,molimo izaberite drugi!")
+      return
+    }
+    this.showModal2 = true
+    this.forma.controls['datum'].patchValue(event.date.toLocaleDateString("sr-RS"))
+    this.forma.controls['datum'].disable()
+  }
+  setShowCalendar(){
+    this.showCalendar = !this.showCalendar
   }
 }

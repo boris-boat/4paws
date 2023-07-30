@@ -105,7 +105,7 @@
 
   <section>
     <div class="columns musterije is-vcentered is-centered" id="musterije">
-      <div class="column is-6 is-12-mobile slike-musterija m-6">
+      <div class="column is-6 is-12-mobile slike-musterija">
         <gallery
           *ngIf="isMobile()"
           [items]="dogsItems"
@@ -121,7 +121,7 @@
         ></gallery>
       </div>
 
-      <div class="column is-4 is-12-mobile termini">
+      <!-- <div class="column is-4 is-12-mobile termini">
         <p class="is-size-2 has-text-centered" *ngIf="termini.length != 0">
           Slobodni termini
         </p>
@@ -147,6 +147,27 @@
             </div>
           </div>
         </div>
+      </div> -->
+      <div *ngIf="showCalendar" class="calendar-wrapper column is-4 is-12-mobile is-vcentered is-centered">
+        
+        <div class="calendar-info">
+          <h3><b> {{ viewDate | calendarDate:(view + 'ViewTitle'):'sr-LATN'|titlecase }}</b> </h3>
+          <div class="month-button-wrapper">
+            <button mwlCalendarPreviousView  [(viewDate)]="viewDate" [view]="view" class="button is-primary"> < </button>
+            <button mwlCalendarNextView  [(viewDate)]="viewDate" [view]="view" class="button is-primary"> > </button>
+              </div>
+        </div>
+
+        <mwl-calendar-month-view 
+        [locale]="locale"
+        [viewDate]="viewDate"
+        (dayClicked)="calendarChange($event.day)"
+       >
+       </mwl-calendar-month-view>
+      </div>
+      <div *ngIf="!showCalendar" class="showcalendar-button column is-5 is-12-mobile is-vcentered is-centered"> 
+        <h2 class=" text-center">Pritiskom na dugme "Prikaži kalendar",pojavljuje se kalendar i odabirom datuma prikazujete formu za upit.Izaberite datum koji vam odgovara a mi ćemo vam se u najkraćem roku javiti oko potvrde ili dogovora.</h2>
+          <button (click)="setShowCalendar()" class="button is-primary mx-auto">Prikaži kalendar</button>
       </div>
     </div>
   </section>
@@ -213,9 +234,15 @@
     <div class="modal-content animate__animated animate__fadeInUp">
       <form class="forma" [formGroup]="forma">
         <div class="field">
-          <label class="label">Termin</label>
+          <label class="label">Datum</label>
           <div class="control">
-            <input class="input" type="text" formControlName="termin" />
+            <input class="input" type="text" formControlName="datum" />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Vreme</label>
+          <div class="control">
+            <input class="input" type="time" formControlName="vreme" />
           </div>
         </div>
         <div class="field">

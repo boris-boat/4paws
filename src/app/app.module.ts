@@ -9,6 +9,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NotifierModule } from 'angular-notifier';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { registerLocaleData } from '@angular/common';
+import localeSr from '@angular/common/locales/sr-Latn';
+registerLocaleData(localeSr)
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +35,7 @@ import { NotifierModule } from 'angular-notifier';
 
         }
       }
-    }), GalleryModule.withConfig({ loop: true, autoPlay: true })
+    }), GalleryModule.withConfig({ loop: true, autoPlay: true }), CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
   providers: [],
   bootstrap: [AppComponent]
